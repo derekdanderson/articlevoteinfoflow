@@ -8,7 +8,8 @@ Use this Flow to add a Component that will display all of the aggregate vote dat
 </a>
 
 Prerequisites:
-- Lighting to display the Flow in a Component
+- Lighting : to display the Flow in a Component
+- Lighting Knowledge : to view the article in Lightning
 
 After Installation:
 - Add the flow to the Case as a Component
