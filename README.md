@@ -12,5 +12,5 @@ Prerequisites:
 - Lighting Knowledge : to view the article in Lightning
 
 After Installation:
-- Add the flow to the Case as a Component
+- Add the flow to the Case as a Component (check "Pass the recordid")
 - Customize which votes are displayed and the text on the screen

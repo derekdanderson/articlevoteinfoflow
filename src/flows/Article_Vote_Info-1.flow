@@ -3,8 +3,8 @@
     <assignments>
         <name>setAll</name>
         <label>setAll</label>
-        <locationX>484</locationX>
-        <locationY>226</locationY>
+        <locationX>746</locationX>
+        <locationY>117</locationY>
         <assignmentItems>
             <assignToReference>allChannels</assignToReference>
             <operator>Assign</operator>
@@ -17,10 +17,26 @@
         </connector>
     </assignments>
     <assignments>
+        <name>SetAllToZeroText</name>
+        <label>SetAllToZeroText</label>
+        <locationX>1175</locationX>
+        <locationY>16</locationY>
+        <assignmentItems>
+            <assignToReference>allChannels</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ZeroScoreTextValue</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>isAppZero</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>setApp</name>
         <label>setApp</label>
-        <locationX>472</locationX>
-        <locationY>351</locationY>
+        <locationX>748</locationX>
+        <locationY>213</locationY>
         <assignmentItems>
             <assignToReference>inApp</assignToReference>
             <operator>Assign</operator>
@@ -33,10 +49,26 @@
         </connector>
     </assignments>
     <assignments>
+        <name>SetAppToZeroText</name>
+        <label>SetAppToZeroText</label>
+        <locationX>1178</locationX>
+        <locationY>115</locationY>
+        <assignmentItems>
+            <assignToReference>inApp</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ZeroScoreTextValue</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>isPublicZero</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>setCustomer</name>
         <label>setCustomer</label>
-        <locationX>470</locationX>
-        <locationY>532</locationY>
+        <locationX>746</locationX>
+        <locationY>398</locationY>
         <assignmentItems>
             <assignToReference>inCustomer</assignToReference>
             <operator>Assign</operator>
@@ -49,10 +81,26 @@
         </connector>
     </assignments>
     <assignments>
+        <name>SetCustToZeroText</name>
+        <label>SetCustToZeroText</label>
+        <locationX>1178</locationX>
+        <locationY>341</locationY>
+        <assignmentItems>
+            <assignToReference>inCustomer</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ZeroScoreTextValue</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>isPartnerZero</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>setPartner</name>
         <label>setPartner</label>
-        <locationX>478</locationX>
-        <locationY>634</locationY>
+        <locationX>749</locationX>
+        <locationY>506</locationY>
         <assignmentItems>
             <assignToReference>inPartner</assignToReference>
             <operator>Assign</operator>
@@ -65,10 +113,26 @@
         </connector>
     </assignments>
     <assignments>
+        <name>SetPartnerToZeroText</name>
+        <label>SetPartnerToZeroText</label>
+        <locationX>1179</locationX>
+        <locationY>453</locationY>
+        <assignmentItems>
+            <assignToReference>inPartner</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ZeroScoreTextValue</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Article_Vote_Statistics</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>setPublic</name>
         <label>setPublic</label>
-        <locationX>466</locationX>
-        <locationY>437</locationY>
+        <locationX>751</locationX>
+        <locationY>306</locationY>
         <assignmentItems>
             <assignToReference>inPublic</assignToReference>
             <operator>Assign</operator>
@@ -80,11 +144,191 @@
             <targetReference>LoopArticleVotes</targetReference>
         </connector>
     </assignments>
+    <assignments>
+        <name>SetPublicToZeroText</name>
+        <label>SetPublicToZeroText</label>
+        <locationX>1176</locationX>
+        <locationY>221</locationY>
+        <assignmentItems>
+            <assignToReference>inPublic</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>ZeroScoreTextValue</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>isCustZero</targetReference>
+        </connector>
+    </assignments>
+    <constants>
+        <name>Zero</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>0</stringValue>
+        </value>
+    </constants>
+    <constants>
+        <name>ZeroScoreTextValue</name>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>No Votes Recorded</stringValue>
+        </value>
+    </constants>
+    <decisions>
+        <name>isAllZero</name>
+        <label>isAllZero?</label>
+        <locationX>967</locationX>
+        <locationY>16</locationY>
+        <defaultConnector>
+            <targetReference>isAppZero</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
+        <rules>
+            <name>All_is_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>allChannels</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Zero</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SetAllToZeroText</targetReference>
+            </connector>
+            <label>All is 0</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>isAppZero</name>
+        <label>isAppZero?</label>
+        <locationX>963</locationX>
+        <locationY>116</locationY>
+        <defaultConnector>
+            <targetReference>isPublicZero</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
+        <rules>
+            <name>App_is_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>inApp</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Zero</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SetAppToZeroText</targetReference>
+            </connector>
+            <label>App is 0</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>isCustZero</name>
+        <label>isCustZero?</label>
+        <locationX>969</locationX>
+        <locationY>335</locationY>
+        <defaultConnector>
+            <targetReference>isPartnerZero</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
+        <rules>
+            <name>Cust_is_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>inCustomer</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Zero</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SetCustToZeroText</targetReference>
+            </connector>
+            <label>Cust is 0</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>isPartnerZero</name>
+        <label>isPartnerZero?</label>
+        <locationX>971</locationX>
+        <locationY>455</locationY>
+        <defaultConnector>
+            <targetReference>Article_Vote_Statistics</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
+        <rules>
+            <name>Partner_is_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>inPartner</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Zero</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SetPartnerToZeroText</targetReference>
+            </connector>
+            <label>Partner is 0</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>isPublicZero</name>
+        <label>isPublicZero?</label>
+        <locationX>967</locationX>
+        <locationY>226</locationY>
+        <defaultConnector>
+            <targetReference>isCustZero</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
+        <rules>
+            <name>Public_is_0</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>inPublic</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <elementReference>Zero</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SetPublicToZeroText</targetReference>
+            </connector>
+            <label>Public is 0</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>isRecordIDNull</name>
+        <label>isRecordIDNull?</label>
+        <locationX>22</locationX>
+        <locationY>18</locationY>
+        <defaultConnector>
+            <targetReference>GetArticleVersionData</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>[Default Outcome]</defaultConnectorLabel>
+        <rules>
+            <name>Record_ID_is_null</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>recordId</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Error_1</targetReference>
+            </connector>
+            <label>Record ID is null</label>
+        </rules>
+    </decisions>
     <decisions>
         <name>whatChannel</name>
         <label>whatChannel?</label>
-        <locationX>206</locationX>
-        <locationY>296</locationY>
+        <locationX>433</locationX>
+        <locationY>298</locationY>
         <defaultConnector>
             <targetReference>LoopArticleVotes</targetReference>
         </defaultConnector>
@@ -170,8 +414,8 @@
     <loops>
         <name>LoopArticleVotes</name>
         <label>LoopArticleVotes</label>
-        <locationX>706</locationX>
-        <locationY>15</locationY>
+        <locationX>433</locationX>
+        <locationY>16</locationY>
         <assignNextValueToReference>thisArticleVote</assignNextValueToReference>
         <collectionReference>articleVotes</collectionReference>
         <iterationOrder>Asc</iterationOrder>
@@ -179,15 +423,15 @@
             <targetReference>whatChannel</targetReference>
         </nextValueConnector>
         <noMoreValuesConnector>
-            <targetReference>Article_Vote_Statistics</targetReference>
+            <targetReference>isAllZero</targetReference>
         </noMoreValuesConnector>
     </loops>
     <processType>Flow</processType>
     <recordLookups>
         <name>GetArticleVersionData</name>
         <label>GetArticleVersionData</label>
-        <locationX>177</locationX>
-        <locationY>103</locationY>
+        <locationX>20</locationX>
+        <locationY>165</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>GetVoteData</targetReference>
@@ -208,8 +452,8 @@
     <recordLookups>
         <name>GetVoteData</name>
         <label>GetVoteData</label>
-        <locationX>336</locationX>
-        <locationY>105</locationY>
+        <locationX>271</locationX>
+        <locationY>167</locationY>
         <assignNullValuesIfNoRecordsFound>true</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>LoopArticleVotes</targetReference>
@@ -229,14 +473,16 @@
     <screens>
         <name>Article_Vote_Statistics</name>
         <label>Article Vote Statistics</label>
-        <locationX>957</locationX>
-        <locationY>95</locationY>
+        <locationX>1181</locationX>
+        <locationY>572</locationY>
         <allowBack>false</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>false</allowPause>
         <fields>
             <name>VoteDataScreen</name>
-            <fieldText>All Channels: {!allChannels}
+            <fieldText>Scores: 1 (Bad) to 5 (Good)
+
+All Channels: {!allChannels}
 In App: {!inApp}
 Public: {!inPublic}
 Customer: {!inCustomer}
@@ -246,7 +492,25 @@ Partner: {!inPartner}</fieldText>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
     </screens>
-    <startElementReference>GetArticleVersionData</startElementReference>
+    <screens>
+        <name>Error_1</name>
+        <label>Error 1</label>
+        <locationX>272</locationX>
+        <locationY>17</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>UpdateComponent</name>
+            <fieldText>Error: Update Component in App Builder
+
+Make sure &quot;Pass record ID into this variable&quot; is checked for recordID on this Flow Component</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <startElementReference>isRecordIDNull</startElementReference>
     <variables>
         <name>allChannels</name>
         <dataType>String</dataType>
